@@ -1,0 +1,11 @@
+a.out$
+in.txt$
+-l$
+libft.a$
+libft.h$
+main.c$
+out.txt$
+pipex$
+pipex.c$
+pipex.h$
+pipex_utils.c$
