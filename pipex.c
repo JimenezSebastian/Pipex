@@ -3,6 +3,7 @@
 
 void error_exit(char *error_msg)
 {
+
     perror(error_msg);
     exit(1);
 }
@@ -43,6 +44,11 @@ void execute_command (char *cmd, char  **env)
 		error_exit("Command not found");
 	if (execve(path, cmd_v, env) == -1)
 		error_exit("execve failed");
+}
+
+int nido()
+{
+        
 }
 
 void	pipex(char **argv, char **env)
@@ -98,6 +104,7 @@ void	pipex(char **argv, char **env)
 
 int main(int argc, char **argv, char **env)
 {
+        int pid
 	if (argc < 5)
 		return (ft_putstr_fd("./pipex file1 cmd1 cmd2 file2\n", 2), 1);
 	pipex(argv, env);
