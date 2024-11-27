@@ -1,13 +1,2 @@
-PH
-TXT
-a.out
-expected_outfile
-infile
-libft.a
-libft.h
-main.c
-outfile
-pipex
-pipex.c
-pipex.h
-pipex_utils.c
+20
+0

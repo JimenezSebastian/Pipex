@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <aio.h>
 #include "libft.h"
-//#include <error.h>
+#include <error.h>
 #include <stdio.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -25,9 +25,8 @@
 # include <fcntl.h>
 # include <sys/wait.h>
 
-void pipex(char **argv, char **env);
-void handle_here_doc(char **argv, char **env);
-void execute_command (char *cmd, char  **env);
-char  *find_path(char *cmd, char **env);
+void	handle_here_doc(char **argv, char **env);
+void	execute_command (char *cmd, char  **env);
+char	*find_path(char *cmd, char **env);
 
 #endif
