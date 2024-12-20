@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>
+# include <limits.h>
 
 int		ft_isalpha(int i);
 int		ft_isdigit(int i);
@@ -29,6 +30,7 @@ int		ft_tolower(int i);
 int		ft_atoi(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+char	*ft_strcat(char *dest, const char *src);
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 char	*ft_strtrim(char const *s1, char const *set);
