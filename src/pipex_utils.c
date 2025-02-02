@@ -10,25 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../include/pipex.h"
 
-void	free_v2(char **trash)
-{
-	int		i;
-
-	i = 0;
-	while (trash[i])
-		free(trash[i++]);
-	free(trash);
-}
-
-void	error_exit(char *error_msg)
-{
-	perror(error_msg);
-	exit(1);
-}
-
-char	*find_path(char *cmd, char **env)
+char	*ft_find_path(char *cmd, char **env)
 {
 	char	**paths;
 	char	*path;
@@ -46,33 +30,40 @@ char	*find_path(char *cmd, char **env)
 		path = ft_strjoin(temp, cmd);
 		free (temp);
 		if (access(path, F_OK) == 0)
-			return (free_v2(paths), path);
+			return (ft_free_arr(paths), path);
 		free(path);
 		i++;
 	}
-	return (free_v2 (paths), NULL);
+	return (ft_free_arr (paths), NULL);
 }
 
-int	execute_command(char *cmd, char **env)
+void	ft_free_arr(char **trash)
 {
-	char	**cmd_v;
-	char	*path;
+	int		i;
 
-	cmd_v = ft_split(cmd, ' ');
-	if ((access(cmd_v[0], F_OK | X_OK) == 0) \
-		&& ft_strnstr(cmd_v[0], "./", 2))
+	i = 0;
+	while (trash[i])
+		free(trash[i++]);
+	free(trash);
+}
+
+void	ft_free_lst_content(t_node *lst)
+{
+	t_node	*delete;
+
+	if (!lst)
+		return ;
+	while (lst)
 	{
-		if (execve(cmd_v[0], cmd_v, env) == -1)
-			return (free_v2(cmd_v), 1);
+		free(lst->token);
+		delete = lst;
+		lst = lst->next;
+		free(delete);
 	}
-	else if (access(cmd_v[0], F_OK | X_OK) != 0 && ft_strchr(cmd_v[0], '/'))
-		return (free_v2(cmd_v), 1);
-	else
-	{
-		path = find_path(cmd_v[0], env);
-		if (path == NULL || execve(path, cmd_v, env) == -1)
-			return (free_v2(cmd_v), 1);
-		free(path);
-	}
-	return (0);
+}
+
+void	ft_error_exit(char *error_msg)
+{
+	perror(error_msg);
+	exit(1);
 }
